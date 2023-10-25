@@ -1,0 +1,43 @@
+{% extends 'template.html' %}
+
+{% block script %}
+            cards = {{cards | safe}};
+            {% raw %}
+            function newCard(step = 1) {
+                idx = cards.indexOf(document.getElementById("card").textContent);
+                newIdx = idx + step;
+                document.getElementById("card").textContent = cards[newIdx < 0 ? cards.length - 1 : newIdx % cards.length];
+            };
+
+            document.onkeydown = function (e) {
+                switch (e.key) {
+                    case 'ArrowLeft':
+                        newCard(-1);
+                        break;
+                    case 'ArrowRight':
+                        newCard();
+                };
+            };
+            {% endraw %}
+{% endblock %}
+
+{% block style %}
+            h1 {
+                padding-top: 50%;
+                text-align: center;
+                font-family: Copperplate;
+                margin: 0 auto;
+                min-width: 200px;
+                max-width: 375px;
+                color: #cdcdcd;
+            }
+{% endblock %}
+
+{## there has to be a better way... ##}
+{% block container_attrs %}
+onclick="newCard()"
+{% endblock %}
+
+{% block content %}
+            <h1 id="card" onclick="newCard()">{{cards[0]}}</h1>
+{% endblock %}

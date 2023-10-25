@@ -1,0 +1,31 @@
+{% extends 'template.html' %}
+
+{% block style %}
+            #menu {
+                padding-top: 15%;
+            }
+
+            button {
+                font-family: Copperplate;
+                background: none;
+                border-radius: 15px;
+                padding: 10px 24px;
+                cursor: pointer;
+                width: 60%;
+                height: auto;
+                min-width: 355px;
+                max-width: 450px;
+                margin: 5% auto;
+                font-size: clamp(20px, 5vw, 30px);
+                text-align: center;
+                display: block;
+            }
+{% endblock %}
+
+{% block content %}
+                <div id="menu">
+                    {% for deck, color in decks.items()  %}
+                    <button style="border: 5px solid {{color}}; color: {{color}};" onclick="location.href='{{ url_for(deck.lower().replace(" ", "_").replace("-", "_")) }}'">{{deck}}</button>
+                    {% endfor %}
+                </div>
+{% endblock %}
