@@ -22,30 +22,6 @@ def home():
         }
     return render_template('menu.html', decks = decks)
 
-@app.route("/self")
-def self():
-    return render_template('deck.html', cards = deck_generator('Self'))
-
-@app.route("/strangers")
-def strangers():
-    return render_template('deck.html', cards = deck_generator('Strangers'))
-
-@app.route("/friends")
-def friends():
-    return render_template('deck.html', cards = deck_generator('Friends'))
-
-@app.route("/dating")
-def dating():
-    return render_template('deck.html', cards = deck_generator('Dating'))
-
-@app.route("/healing")
-def healing():
-    return render_template('deck.html', cards = deck_generator('Healing'))
-
-@app.route("/couples")
-def couples():
-    return render_template('deck.html', cards = deck_generator('Couples'))
-
-@app.route("/long_term_couples")
-def long_term_couples():
-    return render_template('deck.html', cards = deck_generator('Long-term Couples'))
+@app.route("/<deck_name>")
+def display_deck(deck_name: str):
+    return render_template('deck.html', cards = deck_generator(deck_name))

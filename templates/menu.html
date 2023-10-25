@@ -24,8 +24,8 @@
 
 {% block content %}
                 <div id="menu">
-                    {% for deck, color in decks.items()  %}
-                    <button style="border: 5px solid {{color}}; color: {{color}};" onclick="location.href='{{ url_for(deck.lower().replace(" ", "_").replace("-", "_")) }}'">{{deck}}</button>
+                    {% for deck_name, color in decks.items()  %}
+                    <button style="border: 5px solid {{color}}; color: {{color}};" onclick="location.href='{{ url_for("display_deck", deck_name = deck_name) }}'">{{deck_name}}</button>
                     {% endfor %}
                 </div>
 {% endblock %}
