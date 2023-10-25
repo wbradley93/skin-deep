@@ -1,0 +1,17 @@
+{% extends 'template.html' %}
+
+{% block style %}
+            h1 {
+                padding-top: 50%;
+                text-align: center;
+                font-family: Copperplate;
+                margin: 0 auto;
+                min-width: 200px;
+                max-width: 375px;
+                color: #cdcdcd;
+            }
+{% endblock %}
+
+{% block content %}
+            <h1>{{ error_message }}</br><a href="{{ url_for('home') }}">Main menu</a></h1>
+{% endblock %}
